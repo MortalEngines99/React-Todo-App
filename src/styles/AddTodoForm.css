@@ -1,0 +1,34 @@
+.AddTodoForm {
+    font-family: Montserrat, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+    max-width: 100%;
+}
+.AddTodoForm-input {
+    display: inline-block;
+    font-size:16px;
+    font-family: inherit;
+    border: none;
+    border: 2px solid #EDEDED;
+    border-radius: 7px;
+    padding: 0.5em;
+}
+
+.AddTodoForm-input__todo {
+    margin-right: 10px;
+    transition: border 0.5s;
+}
+
+.AddTodoForm-input__todo:focus {
+    border: 2px solid #82DD55;
+}
+
+.AddTodoForm-addBtn {
+    cursor: pointer;
+    box-shadow: 0 1.5px 2px 1px rgba(0, 0, 0, 0.3)
+}
+
+.AddTodoForm-addBtn__disabled {
+    cursor: not-allowed;
+    box-shadow: none;
+}

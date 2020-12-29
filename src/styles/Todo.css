@@ -1,0 +1,42 @@
+.Todo{
+    background-color: #EDEDED;
+    box-shadow: none;
+    border-radius: 7px;
+    margin: 0.7em 0;
+    padding:0.5em;
+    font-size: 18px;
+    word-wrap: break-word;
+    cursor: pointer;
+    display:flex;
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.Todo:hover {
+    background-color: #fafafa;
+    box-shadow: 0 1.5px 2px 1px rgba(0, 0, 0, 0.3);
+}
+
+.Todo__completed {
+    text-decoration: line-through;
+    opacity: 0.5;
+}
+
+.Todo-text {
+    flex:2;
+}
+
+.Todo-btn {
+    flex:0.3;
+    font-size: 16px;
+    border:none;
+    padding: 0.5em 0;
+    cursor:pointer;
+    background-color:#e2e2e2;
+    font-family: inherit;
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.Todo-btn:hover {
+    background-color: #fafafa;
+    box-shadow: 0 1.5px 2px 1px rgba(0, 0, 0, 0.3)
+}
