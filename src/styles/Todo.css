@@ -1,6 +1,6 @@
 .Todo{
     background-color: #EDEDED;
-    box-shadow: none;
+    box-shadow: 0 1px 1px 1px rgba(0, 0, 0, 0.1);
     border-radius: 7px;
     margin: 0.7em 0;
     padding:0.5em;
@@ -8,6 +8,7 @@
     word-wrap: break-word;
     cursor: pointer;
     display:flex;
+    align-items:center;
     transition: background-color 0.3s, box-shadow 0.3s;
 }
 
@@ -25,18 +26,34 @@
     flex:2;
 }
 
+.Todo-editForm {
+    box-sizing: border-box;
+    display: inherit;
+    font-size: inherit;
+    font-family: inherit;
+    width:100%;
+    padding:5px 10px;
+}
+
 .Todo-btn {
-    flex:0.3;
+    flex:0.2;
     font-size: 16px;
     border:none;
     padding: 0.5em 0;
+    margin:0 5px;
     cursor:pointer;
     background-color:#e2e2e2;
     font-family: inherit;
+    box-shadow: 0 1px 1px 1px rgba(0, 0, 0, 0.1);
     transition: background-color 0.3s, box-shadow 0.3s;
 }
 
 .Todo-btn:hover {
     background-color: #fafafa;
     box-shadow: 0 1.5px 2px 1px rgba(0, 0, 0, 0.3)
+}
+
+.Todo-btn__disabled {
+    cursor: not-allowed;
+    box-shadow: none;
 }

@@ -24,7 +24,7 @@ const TodoList = () => {
         },
     ]);
 
-    const addNewTodo = (newTodo) => setTodos([
+    const addNewTodo = newTodo => setTodos([
         ...todos,
         newTodo
     ]);
@@ -46,6 +46,17 @@ const TodoList = () => {
 
     }
 
+    const updateTodo = (id, updatedTask) => {
+        const updatedTodos = todos.map((todo) => {
+            if(todo.id === id)
+                return {...todo, task: updatedTask}
+            
+            return todo
+        })
+
+        setTodos(updatedTodos);
+    }
+
     return (
         <div className="TodoList">
 
@@ -61,7 +72,8 @@ const TodoList = () => {
                         task={todo.task} 
                         completed={todo.completed}
                         toggleTodo={toggleTodo}
-                        removeTodo={removeTodo} />
+                        removeTodo={removeTodo}
+                        updateTodo={updateTodo} />
                     ))
                 :
                     <p>No todos created</p>
