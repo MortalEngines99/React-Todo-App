@@ -24,10 +24,7 @@ const TodoList = () => {
         },
     ]);
 
-    const addNewTodo = newTodo => setTodos([
-        ...todos,
-        newTodo
-    ]);
+    const addNewTodo = newTodo => setTodos([...todos, newTodo]);
 
     const removeTodo = id => setTodos([...todos.filter(todo => todo.id !== id)])
 
@@ -64,20 +61,47 @@ const TodoList = () => {
 
             <ul className="TodoList-todos">
 
-                {todos.length !== 0 ?
-                    todos.map((todo) => (
-                        <Todo 
-                        key={todo.id} 
-                        id={todo.id}
-                        task={todo.task} 
-                        completed={todo.completed}
-                        toggleTodo={toggleTodo}
-                        removeTodo={removeTodo}
-                        updateTodo={updateTodo} />
-                    ))
-                :
-                    <p>No todos created</p>
+                <h3>Active Tasks</h3>
+
+                {
+                    todos.filter(todo => !todo.completed).length !== 0 ?
+
+                        todos.filter(todo => !todo.completed).map(todo => (
+                            <Todo
+                                key={todo.id}
+                                id={todo.id}
+                                task={todo.task}
+                                completed={todo.completed}
+                                toggleTodo={toggleTodo}
+                                removeTodo={removeTodo}
+                                updateTodo={updateTodo} />
+                        ))
+
+                        :
+                        <p>No active tasks</p>
                 }
+
+
+                <h3>Completed Tasks</h3>
+
+                {
+                    todos.filter(todo => todo.completed).length !== 0 ?
+
+                    todos.filter(todo => todo.completed).map(todo => (
+                        <Todo
+                            key={todo.id}
+                            id={todo.id}
+                            task={todo.task}
+                            completed={todo.completed}
+                            toggleTodo={toggleTodo}
+                            removeTodo={removeTodo}
+                            updateTodo={updateTodo} />
+                    ))
+
+                    : 
+                    <p>No completed tasks</p>
+
+                }             
 
             </ul>
         </div>
