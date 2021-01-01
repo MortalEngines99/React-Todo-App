@@ -1,9 +1,16 @@
 import { useState } from "react";
 import "../styles/TodoList.css";
 
-// Import external libs
+// TODO Add Toast Notifications on add, updated and delete using https://react-hot-toast.com/
+// TODO Add LocalStorage support with message showing if tasks were loaded from local storage or not
+// TODO Add animations to smooth the add, updated and delete actions
+// TODO Add a very simple dark mode function
+
+// Import external libs && functions
 // https://www.npmjs.com/package/uuid
 import { v4 as uuidv4 } from "uuid";
+import Toast from "./Toaster/Toast";
+
 
 // Import components
 import Todo from "./Todo";
@@ -14,19 +21,36 @@ const TodoList = () => {
     const [todos, setTodos] = useState([
         {
             id: uuidv4(),
-            task: "👆 Enter your first todo above",
+            task: "👆 Enter your first task above",
             completed:false
         },
         {
             id: uuidv4(),
-            task: "Click a task to complete it",
+            task: "Click on a task to complete it",
+            completed:false
+        },
+        {
+            id: uuidv4(),
+            task: "Click ❌ to remove this task 👉",
+            completed:false
+        },
+        {
+            id: uuidv4(),
+            task: "Click 🖊 to edit this task 👉",
             completed:false
         },
     ]);
 
-    const addNewTodo = newTodo => setTodos([...todos, newTodo]);
+    const addNewTodo = newTodo => {
+        setTodos([...todos, newTodo]);
+        Toast("success", "Task added");
+        
+    }
 
-    const removeTodo = id => setTodos([...todos.filter(todo => todo.id !== id)])
+    const removeTodo = id => {
+        setTodos([...todos.filter(todo => todo.id !== id)]);
+        Toast("success", "Task removed");
+    }
 
     const toggleTodo = id => {
 
@@ -52,6 +76,7 @@ const TodoList = () => {
         })
 
         setTodos(updatedTodos);
+        Toast("success", "Task updated");
     }
 
     return (
