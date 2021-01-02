@@ -1,15 +1,14 @@
 import { useState, useEffect } from "react";
 import "../styles/TodoList.css";
 
-// TODO Add Toast Notifications on add, updated and delete using https://react-hot-toast.com/
-// TODO Add LocalStorage support with message showing if tasks were loaded from local storage or not
+// Features which can be implemented in the future
 // TODO Add animations to smooth the add, updated and delete actions
 // TODO Add a very simple dark mode function
 
 // Import external libs && functions
 // https://www.npmjs.com/package/uuid
 import { v4 as uuidv4 } from "uuid";
-import Toast from "./Toaster/Toast";
+import Toast from "./Toast/Toast";
 
 
 // Import components
