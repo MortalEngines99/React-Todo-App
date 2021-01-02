@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "../styles/TodoList.css";
 
 // TODO Add Toast Notifications on add, updated and delete using https://react-hot-toast.com/
@@ -18,7 +18,7 @@ import AddTodoForm from "./AddTodoForm";
 
 const TodoList = () => {
 
-    const [todos, setTodos] = useState([
+    const originalTodos = [
         {
             id: uuidv4(),
             task: "👆 Enter your first task above",
@@ -39,7 +39,36 @@ const TodoList = () => {
             task: "Click 🖊 to edit this task 👉",
             completed:false
         },
-    ]);
+    ]
+
+    const [todos, setTodos] = useState(originalTodos);
+
+    useEffect(() => {
+        const storedTodos = localStorage.getItem("todos");
+        
+        if(storedTodos !== null){
+
+            const todosFromStorage = JSON.parse(localStorage.getItem("todos"));
+            
+            setTodos(todosFromStorage);
+            Toast("success", "Tasks synced from localStorage",{duration:5000});
+        }
+
+    },[])
+
+    useEffect(() => {
+
+        if(todos.length !== 0)
+            localStorage.setItem("todos", JSON.stringify(todos));
+
+    }, [todos])
+
+    const clearLocalStorage = () => {
+        localStorage.clear();
+        Toast("success", "Local Storage cleared, refresh the page to view the default tasks", {duration:3000});
+        setTodos([]);
+    };
+
 
     const addNewTodo = newTodo => {
         setTodos([...todos, newTodo]);
@@ -83,6 +112,8 @@ const TodoList = () => {
         <div className="TodoList">
 
             <AddTodoForm addNewTodo={addNewTodo} />
+
+            <button className="TodoList-resetBtn" onClick={() => clearLocalStorage()}>Clear Local Storage</button>
 
             <ul className="TodoList-todos">
 
